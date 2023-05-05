@@ -1,0 +1,23 @@
+{
+    "Behemoth": {
+        "name": "貝西摩斯",
+        "str_mod": 3.8,
+        "dex_mod": 2.5,
+        "con_mod": 3.2,
+        "wis_mod": 1.2
+    },
+    "Leviathan": {
+        "name": "利維坦",
+        "str_mod": 0.2,
+        "dex_mod": 0.2,
+        "con_mod": 2.3,
+        "wis_mod": 5.2
+    },
+    "Tiamat": {
+        "name": "提亞馬特",
+        "str_mod": 1.5,
+        "dex_mod": 0.5,
+        "con_mod": 4.2,
+        "wis_mod": 0.5
+    }
+}

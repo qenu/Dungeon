@@ -1,0 +1,263 @@
+{
+  "wood_stick": {
+    "category": "weapon",
+    "name": "普通的木枝",
+    "description": "在路邊撿到的，看起來很普通的木枝。",
+    "str": 1,
+    "range_adjustment": 50
+  },
+  "silver_ring": {
+    "category": "ring",
+    "name": "銀戒指",
+    "description": "一枚銀戒指，看起來很普通。",
+    "dex": 0.6,
+    "wis": 0.4
+  },
+  "leather_hat": {
+    "category": "head",
+    "name": "皮帽",
+    "description": "破舊的飛行帽。",
+    "con": 0.6,
+    "dex": 0.2,
+    "wis": 0.2
+  },
+  "rotted_pants": {
+    "category": "pants",
+    "name": "腐爛的褲子",
+    "description": "一條腐爛的褲子，散發著屍臭味。",
+    "dex": 0.8,
+    "con": 0.2
+  },
+  "woven_boots": {
+    "category": "boots",
+    "name": "編織草靴",
+    "description": "一雙編織的草靴，看起來很舒服。",
+    "dex": 0.8,
+    "wis": 0.2
+  },
+  "iron_chain": {
+    "category": "necklace",
+    "name": "生鏽鐵鍊",
+    "description": "囚禁食人魔的鐵鍊。",
+    "str": 1.2,
+    "con": -0.4
+  },
+  "chainmail": {
+    "category": "body",
+    "name": "鍊甲",
+    "description": "一件厚重的鍊甲，可以提供很好的保護。",
+    "con": 1.2,
+    "dex": -0.2,
+    "wis": -0.2
+  },
+  "dwarf_gloves": {
+    "category": "gloves",
+    "name": "矮人手套",
+    "description": "一雙矮人的手套，上面充滿了歲月的痕跡。",
+    "str": 0.2,
+    "dex": 0.8
+  },
+  "dwarf_mallet": {
+    "category": "weapon",
+    "name": "矮人巨錘",
+    "description": "矮人打鐵用的錘子，威力驚人但是不易使用。",
+    "str": 1.2,
+    "dex": -0.4,
+    "range_adjustment": 40
+  },
+  "grass_pendant": {
+    "category": "necklace",
+    "name": "草編墜飾",
+    "description": "用植物編織而成的項鍊，散發著神祕的氣息。",
+    "wis": 0.6
+  },
+  "old_cloak": {
+    "category": "body",
+    "name": "破舊的斗篷",
+    "description": "一件舊斗篷，上面有一些洞。",
+    "con": 0.6,
+    "wis": 0.2
+  },
+  "witch_staff": {
+    "category": "weapon",
+    "name": "女巫法杖",
+    "description": "一根女巫的法杖，上面有一些奇怪的符號。",
+    "wis": 1.2,
+    "str": -0.4,
+    "range_adjustment": 60
+  },
+  "golem_heart": {
+    "category": "ring",
+    "name": "石像鬼的心臟",
+    "description": "石像的心臟，散發著強大的力量。",
+    "str": 1,
+    "wis": -0.4
+  },
+  "rock_bottom": {
+    "category": "pants",
+    "name": "石制腿甲",
+    "description": "用石像鬼的雙手打造而成的腿甲，防禦超群。",
+    "con": 0.8,
+    "str": 0.2
+  },
+  "stolen_helmet": {
+    "category": "head",
+    "name": "偷來的頭盔",
+    "description": "一個偷來的頭盔，上面有一些血跡。",
+    "con": 0.6,
+    "str": 0.2
+  },
+  "skin_gloves": {
+    "category": "gloves",
+    "name": "親膚手套",
+    "description": "用蜥蜴人腹部的軟皮製成的手套，穿戴舒適，受到貴族歡迎。",
+    "wis": 0.8,
+    "con": 0.2
+  },
+  "polearm": {
+    "category": "weapon",
+    "name": "方天畫戟",
+    "description": "蜥蜴人愛用的長柄武器，不知道是誰製作的。",
+    "str": 1.2,
+    "con": -0.4,
+    "range_adjustment": 70
+  },
+  "rock_shield": {
+    "category": "weapon",
+    "name": "石像鬼之盾",
+    "description": "堅不可摧的大盾，據說是石像鬼的小孩。",
+    "con": 1.4,
+    "str": -0.6,
+    "range_adjustment": 90
+  },
+  "slimey_ring": {
+    "category": "ring",
+    "name": "黏液尾戒",
+    "description": "從史萊姆的掉落物發現的環狀物體...?",
+    "con": 0.2,
+    "wis": 0.7
+  },
+  "slimey_boots": {
+    "category": "boots",
+    "name": "黏液長靴",
+    "description": "把雙腳陷入死亡的史萊姆，意外的合腳。",
+    "dex": -0.2,
+    "wis": 0.4,
+    "str": 0.4
+  },
+  "slime": {
+    "category": "head",
+    "name": "史萊姆",
+    "description": "將史萊姆戴在頭上，可以隱藏身分。",
+    "wis": 0.7,
+    "str": 0.7
+  },
+  "rusted_chainmail": {
+    "category": "body",
+    "name": "鏽蝕鍊甲",
+    "description": "鏽蝕的鍊甲，看起來很脆弱。",
+    "con": 0.3,
+    "dex": 0.6
+  },
+  "rusted_chainmail_legs": {
+    "category": "pants",
+    "name": "鏽蝕鍊甲(腿部)",
+    "description": "鏽蝕的鍊甲的下半部，還是看起來很脆弱。",
+    "con": 0.2,
+    "dex": 0.7
+  },
+  "rusted_gloves": {
+    "category": "gloves",
+    "name": "鏽蝕護手",
+    "description": "一雙鏽蝕的護手，好像比鍊甲的品質好一點。",
+    "con": 0.4,
+    "dex": 0.5
+  },
+  "wicked_necklace": {
+    "category": "necklace",
+    "name": "邪惡墜飾",
+    "description": "散發著邪惡氣息的墜飾。",
+    "dex": 0.6,
+    "wis": 0.4
+  },
+  "demon_skin_boots": {
+    "category": "boots",
+    "name": "惡魔皮靴",
+    "description": "小惡魔扒下來的皮所製的長靴，輕靈舒適。",
+    "dex": 0.7,
+    "con": 0.3
+  },
+  "demon_horns": {
+    "category": "weapon",
+    "name": "惡魔之牙",
+    "description": "小惡魔頭上的雙角，散發的邪惡的氣息，非常銳利但是脆弱。",
+    "dex": 1.2,
+    "con": -0.4,
+    "range_adjustment": 85
+  },
+  "lich_staff": {
+    "category": "weapon",
+    "name": "巫妖法杖",
+    "description": "巫妖的法杖，散發著強大的魔力。",
+    "wis": 1.2,
+    "dex": -0.4,
+    "range_adjustment": 80
+  },
+  "silk_robe": {
+    "category": "body",
+    "name": "絲綢長袍",
+    "description": "透光的絲綢材料，可以使身心更加接觸自然元素。",
+    "wis": 0.8,
+    "str": 0.2
+  },
+  "emerald_pendant": {
+    "category": "necklace",
+    "name": "翡翠墜飾",
+    "description": "翡翠上面刻印著王族的象徵，看起來充滿了威嚴。",
+    "con": 0.8,
+    "dex": 0.2
+  },
+  "griffin_claw": {
+    "category": "ring",
+    "name": "獅鷲爪戒",
+    "description": "由獅鷲的爪子製成的戒指。",
+    "dex": 0.8,
+    "con": 0.2
+  },
+  "griffin_skull": {
+    "category": "head",
+    "name": "獅鷲頭顱",
+    "description": "獅鷲的頭骨，看起來笨重但是實際上卻非常輕盈。",
+    "dex": 1.2,
+    "con": -0.4
+  },
+  "griffin_feather": {
+    "category": "weapon",
+    "name": "獅鷲羽翼",
+    "description": "由獅鷲的翅膀所製成的雙刃，輕輕揮舞便可以劃破空氣。",
+    "dex": 1.2,
+    "wis": -0.6,
+    "range_adjustment": 85
+  },
+  "giant_nail": {
+    "category": "body",
+    "name": "巨人之甲",
+    "description": "用巨人的拇指指甲所拼湊而成的鎧甲，據說連矮人的巨斧也無法穿透。",
+    "str": 0.8,
+    "wis": -0.3
+  },
+  "giant_fist": {
+    "category": "gloves",
+    "name": "巨人手甲",
+    "description": "巨人族所使用的手甲，上面雕刻著不明的咒文。",
+    "str": 0.7,
+    "wis": 0.7
+  },
+  "giant_leg": {
+    "category": "pants",
+    "name": "巨人腿甲",
+    "description": "巨人族的腿甲，上面隱藏著巨人族靈活移動的秘密。",
+    "dex": 0.9,
+    "str": -0.2
+  }
+}

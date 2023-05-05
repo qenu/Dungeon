@@ -1,0 +1,48 @@
+{
+    "novice": {
+        "name": "冒險者",
+        "description" : "就只是個菜鳥冒險家。",
+        "str_mod": 1,
+        "dex_mod": 1,
+        "con_mod": 1,
+        "wis_mod": 1,
+        "luk_mod": 1
+    },
+    "paladin": {
+        "name": "聖騎士",
+        "description" : "聖騎士樂於保護弱者、維護正義，受到聖光庇佑的他們擁有使用聖體進行防禦與近身攻擊的能力。",
+        "con_mod": 1.4,
+        "dex_mod": 0.3,
+        "str_mod": 0.3
+    },
+    "berserker": {
+        "name": "狂戰士",
+        "description" : "狂戰士熱愛爭鬥與廝殺，強大的力量與厚實的鎧甲令他們永不退縮，並將戰死沙場視為一生榮耀。",
+        "str_mod": 2.3,
+        "dex_mod": 0.6,
+        "con_mod": 0.8,
+        "wis_mod": 0.5
+    },
+    "rogue": {
+        "name": "掠奪者",
+        "description" : "掠奪者的身手十分靈巧，善於藏匿暗處的他們會在找到時機後迅速出手並在掠奪錢財後悄然離去。",
+        "dex_mod": 2.8,
+        "con_mod": 0.6,
+        "str_mod": 1.4,
+        "wis_mod": 0.8
+    },
+    "wizard": {
+        "name": "魔導師",
+        "description" : "魔導師具有操縱元素精靈的能力，與生俱來的魔法天賦使他們無往不利，卻也有人因此誤入歧途。",
+        "wis_mod": 2.1,
+        "con_mod": 0.5
+    },
+    "bishop": {
+        "name": "神職者",
+        "description": "神職者在受到神祇眷顧後擁有祈禱與祝福的能力，會在戰場上為隊友們祈禱，除此之外一無是處。",
+        "str_mod": 0.3,
+        "dex_mod": 0.3,
+        "con_mod": 0.8,
+        "wis_mod": 0.5
+    }
+}
