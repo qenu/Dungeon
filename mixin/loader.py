@@ -3,7 +3,7 @@ import pathlib
 import orjson
 from loguru import logger as log
 
-from ..utils.dataclass import Item, Job, Mob
+from ..lib import Item, Job, MonsterInfo
 
 datapath = pathlib.Path(__file__).parent.parent.resolve() / "data"
 
@@ -13,7 +13,7 @@ class DungeonLoaderMixin:
         """Load dungeon."""
         self.load_job()
         self.load_item()
-        self.load_monster()
+        self.load_monsterinfo()
         self.load_legend()
         self.load_legendary()
         log.info("Finished loading dungeon data.")
@@ -37,13 +37,13 @@ class DungeonLoaderMixin:
             self.item[name] = Item(data=items_data[name])
         log.info("Loaded {} items.", len(self.item))
 
-    def load_monster(self) -> None:
-        """Load mobs."""
+    def load_monsterinfo(self) -> None:
+        """Load monsterinfo."""
         self.mob = {}
         with open(rf"{datapath}/monster.json", "r", encoding="utf-8") as f:
             mobs_data: dict = orjson.loads(f.read())
         for name in mobs_data.keys():
-            self.mob[name] = Mob(data=mobs_data[name])
+            self.mob[name] = MonsterInfo(data=mobs_data[name])
         log.info("Loaded {} monsters.", len(self.mob))
 
     def load_legend(self) -> None:
@@ -52,7 +52,7 @@ class DungeonLoaderMixin:
         with open(rf"{datapath}/legend.json", "r", encoding="utf-8") as f:
             legend_data: dict = orjson.loads(f.read())
         for name in legend_data.keys():
-            self.legend[name] = Mob(data=legend_data[name])
+            self.legend[name] = MonsterInfo(data=legend_data[name])
         log.info("Loaded {} legends.", len(self.legend))
 
     def load_legendary(self) -> None:
