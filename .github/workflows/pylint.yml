@@ -22,4 +22,4 @@ jobs:
         pip install loguru
     - name: Analysing the code with pylint
       run: |
-        pylint disable=import-error,invalid-name $(git ls-files '*.py')
+        pylint --disable=import-error,invalid-name $(git ls-files '*.py')
