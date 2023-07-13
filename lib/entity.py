@@ -73,12 +73,13 @@ class Entity(StatsModified):
         return round(self.stamina * 2.5, 4)
 
     @property
-    def accuracy(self) -> int:
+    def accuracy(self) -> float:
         """Accuracy is a percentage in int, not a number"""
-        return int(
+        return round(
             self.dexterity
             * 100
-            / ((self.vitality + self.mystic) * 1.6 + self.dexterity * 0.2)
+            / ((self.vitality + self.mystic) * 1.6 + self.dexterity * 0.2),
+            4,
         )
 
     @property

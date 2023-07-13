@@ -556,11 +556,11 @@ class Dungeon(commands.Cog, _DungeonMixin):
             ),
             inline=False,
         )
-        e.add_field(
-            name="• 職業 " + "-" * 12,
-            value=f"```fix\n{job.name}```",
-            inline=True,
-        )
+        # e.add_field(
+        #     name="• 職業 " + "-" * 12,
+        #     value=f"```fix\n{job.name}```",
+        #     inline=True,
+        # )
         e.add_field(
             name="• 等級 " + "-" * 12,
             value=f"```st\nLv. {player.level}\n```",
