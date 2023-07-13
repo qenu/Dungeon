@@ -35,54 +35,54 @@ class DungeonPrivateCommands:
         else:
             await ctx.send("取消重置配點。")
 
-    @commands.command(name="jobadv", aliases=["轉職"])
-    @commands.dm_only()
-    async def jobadv(self, ctx: commands.Context) -> None:
-        if self.check_in_raid(ctx.author.id):
-            await ctx.send("你正在副本中，無法轉職")
-            return
-        player = await self.get_player(ctx.author)
-        if player.level < 10:
-            await ctx.send("你的經驗還不足以轉職，請再努力一下吧！")
-            return
-        if player.job != "novice":
-            confirm = Confirm(ctx.author)
-            ask = await ctx.send(
-                "想要轉職成為其他職業，將會消耗10等級，請確認是否同意。", view=confirm
-            )
-            await confirm.wait()
-            if confirm.value:
-                player.reset_ability_points()
-                await self.set_player(ctx.author, player)
-            else:
-                await ctx.send("取消轉職。")
-                return
+        # @commands.command(name="jobadv", aliases=["轉職"])
+        # @commands.dm_only()
+        # async def jobadv(self, ctx: commands.Context) -> None:
+        #     if self.check_in_raid(ctx.author.id):
+        #         await ctx.send("你正在副本中，無法轉職")
+        #         return
+        #     player = await self.get_player(ctx.author)
+        #     if player.level < 10:
+        #         await ctx.send("你的經驗還不足以轉職，請再努力一下吧！")
+        #         return
+        #     if player.job != "novice":
+        #         confirm = Confirm(ctx.author)
+        #         ask = await ctx.send(
+        #             "想要轉職成為其他職業，將會消耗10等級，請確認是否同意。", view=confirm
+        #         )
+        #         await confirm.wait()
+        #         if confirm.value:
+        #             player.reset_ability_points()
+        #             await self.set_player(ctx.author, player)
+        #         else:
+        #             await ctx.send("取消轉職。")
+        #             return
 
-        advance_view = job_advancement()
-        e = Embed(
-            title="轉職",
-            description="請選擇你想要成為的職業",
-            color=self.bot.color,
-        )
-        for k, v in self.job.items():
-            v: Job
-            if k == "novice":
-                continue
-            e.add_field(
-                name=v.name,
-                value=f"```st\n{v.description}\n```",
-                inline=False,
-            )
-        e.set_footer(text="請在60秒內選擇職業，超過時間將會自動取消。")
-        ask = await ctx.send(embed=e, view=advance_view)
-        await advance_view.wait()
-        if advance_view.value in ["", None]:
-            await ctx.send("取消轉職。")
-        else:
-            name = await self.set_job(ctx.author, advance_view.value)
-            await self.reload_equipment_stats(ctx.author)
-            await ctx.send(f"轉職成功！你現在是**{name}**了！")
-        await ask.delete()
+        # advance_view = job_advancement()
+        # e = Embed(
+        #     title="轉職",
+        #     description="請選擇你想要成為的職業",
+        #     color=self.bot.color,
+        # )
+        # for k, v in self.job.items():
+        #     v: Job
+        #     if k == "novice":
+        #         continue
+        #     e.add_field(
+        #         name=v.name,
+        #         value=f"```st\n{v.description}\n```",
+        #         inline=False,
+        #     )
+        # e.set_footer(text="請在60秒內選擇職業，超過時間將會自動取消。")
+        # ask = await ctx.send(embed=e, view=advance_view)
+        # await advance_view.wait()
+        # if advance_view.value in ["", None]:
+        #     await ctx.send("取消轉職。")
+        # else:
+        #     name = await self.set_job(ctx.author, advance_view.value)
+        #     await self.reload_equipment_stats(ctx.author)
+        #     await ctx.send(f"轉職成功！你現在是**{name}**了！")
+        # await ask.delete()
 
     @commands.command(name="addstats", aliases=["配點"])
     @commands.dm_only()

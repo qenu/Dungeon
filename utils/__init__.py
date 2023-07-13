@@ -2,7 +2,7 @@
 # flake8: noqa
 
 from .captcha import captcha
-from .humanize import intword
+from .format import get_embed, intword, stamp_footer
 from .view import (
     board_view,
     dungeon_view,

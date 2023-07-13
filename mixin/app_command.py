@@ -8,13 +8,13 @@ from loguru import logger as log
 from maki.cogs.utils.view import Confirm
 
 from ..lib import DEV, Guild, Item
-from ..utils import board_view, info_view
+from ..utils import board_view, info_view, stamp_footer
 
 
 class DungeonAppCommandsMixin:
     # cog commands
-    @app_commands.command(name="sheet", description="檢視角色資訊")
-    async def sheet(self, interaction: discord.Interaction) -> None:
+    @app_commands.command(name="player", description="檢視角色資訊")
+    async def playersheet(self, interaction: discord.Interaction) -> None:
         base: discord.ui.View = info_view(interaction.user)
         user_sheet = await self.user_sheet(interaction.user)
         try:
@@ -43,11 +43,11 @@ class DungeonAppCommandsMixin:
         await interaction.response.send_message(embed=e)
 
     # https://github.com/Rapptz/discord.py/issues/7823#issuecomment-1086830458
-    async def checkusercontext(
-        self, interaction: discord.Interaction, user: discord.User
-    ) -> None:
-        embed = await self.user_sheet(user)
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+    # async def checkusercontext(
+    #     self, interaction: discord.Interaction, user: discord.User
+    # ) -> None:
+    #     embed = await self.user_sheet(user)
+    #     await interaction.response.send_message(embed=embed, ephemeral=True)
 
     @app_commands.command(name="character", description="設定遊戲相關資訊")
     @app_commands.choices(
@@ -521,7 +521,7 @@ class DungeonAppCommandsMixin:
                     ),
                     inline=False,
                 )
-            self.stamp_footer(leaderboard_embed)
+            stamp_footer(leaderboard_embed)
             leaderboard_embeds.append(leaderboard_embed)
 
         lb_view = board_view(interaction.user, leaderboard_embeds)

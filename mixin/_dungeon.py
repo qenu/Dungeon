@@ -10,7 +10,7 @@ from discord.ext import commands
 from loguru import logger as log
 
 from ..lib import EXP_MULTIPLIER, FIBONACCI, InstanceHandler, Player
-from ..utils import dungeon_view
+from ..utils import dungeon_view, stamp_footer
 
 
 class DungeonMixin:
@@ -39,7 +39,7 @@ class DungeonMixin:
                 ),
                 colour=world.colour,
             )
-            self.stamp_footer(e)
+            stamp_footer(e)
             await interaction.response.send_message(
                 embed=e,
                 ephemeral=True,
@@ -59,7 +59,7 @@ class DungeonMixin:
         embed = Embed(
             title="有冒險者發起了副本!", description=raid.hint, colour=world.colour
         )
-        self.stamp_footer(embed)
+        stamp_footer(embed)
         embed.add_field(
             name="世界等級", value=f"```st\nLv. {world.level}\n```", inline=True
         )
@@ -675,7 +675,7 @@ class DungeonMixin:
 
         world.raid_result(raid_result)
         result.set_author(name=f"Lv. {mob_level_org} | {raidhandler.mob_name}")
-        self.stamp_footer(result)
+        stamp_footer(result)
 
         combat_log = combat_result + "\n" + combat_log
 

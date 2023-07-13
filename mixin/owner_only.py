@@ -2,6 +2,8 @@ from discord import Colour, Embed
 from discord.ext import commands
 from loguru import logger as log
 
+from ..utils import get_embed
+
 
 class DungeonOwnerCommandsMixin:
     # owner commands
@@ -19,7 +21,7 @@ class DungeonOwnerCommandsMixin:
             await ctx.message.delete()
         except Exception:
             pass
-        e: Embed = self.get_embed(
+        e: Embed = get_embed(
             colour=Colour.red() if self._lockdown else Colour.green(),
             title=f"【系統通知】副本入口已{'關閉' if self._lockdown else '開啟'}。",
         )

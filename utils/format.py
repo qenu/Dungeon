@@ -1,4 +1,7 @@
 # Encoding: UTF-8
+import datetime
+
+import discord
 
 
 def intword(num: int) -> str:
@@ -24,3 +27,16 @@ def intword(num: int) -> str:
             return "∞"
 
     return _intword(num)
+
+
+def stamp_footer(self, e: discord.Embed) -> None:
+    e.set_footer(text=f"{self.__class__.__name__} version: {self.__version__}")
+    e.timestamp = datetime.now()
+
+
+def get_embed(self, **kwargs) -> discord.Embed:
+    e = discord.Embed(**kwargs)
+    e.set_author(name=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+    e.set_footer(text=f"{self.__class__.__name__} version: {self.__version__}")
+    e.timestamp = datetime.now()
+    return e

@@ -12,7 +12,7 @@ from maki.core.bot import Maki
 
 from .lib import FIBONACCI, LEGENDARY_SETS, Guild, Item, Job, Player
 from .mixin import _DungeonMixin
-from .utils import equip_view, intword, inventory_view, stats_view
+from .utils import equip_view, intword, inventory_view, stamp_footer, stats_view
 
 
 class Dungeon(commands.Cog, _DungeonMixin):
@@ -30,23 +30,15 @@ class Dungeon(commands.Cog, _DungeonMixin):
         # self.auto_check.start()
 
         # load context menu
-        self.ctx_menu = discord.app_commands.ContextMenu(
-            name="角色資訊",
-            callback=self.checkusercontext,
-        )
-        self.bot.tree.add_command(self.ctx_menu)
+        # self.ctx_menu = discord.app_commands.ContextMenu(
+        #     name="角色資訊",
+        #     callback=self.checkusercontext,
+        # )
+        # self.bot.tree.add_command(self.ctx_menu)
 
     async def cog_unload(self):
         self.auto_check.cancel()
         await super().cog_unload()
-
-    @commands.Cog.listener(name="on_guild_join")
-    async def on_guild_join(self, guild: discord.Guild) -> None:
-        required_perms = discord.Permissions(permissions=432248712256)
-        bot_member: discord.Member = guild.get_member(self.bot.user.id)
-        if bot_member.guild_permissions < required_perms:
-            log.info(f"Missing permissions, leaving guild({guild.name} | {guild.id}).")
-            await guild.leave()
 
     # @tasks.loop(minutes=10)
     # async def auto_check(self) -> None:
@@ -76,16 +68,16 @@ class Dungeon(commands.Cog, _DungeonMixin):
                 return max(i, 1)
         return len(FIBONACCI)
 
-    def stamp_footer(self, e: discord.Embed) -> None:
-        e.set_footer(text=f"{self.__class__.__name__} version: {self.__version__}")
-        e.timestamp = datetime.now()
+    # def stamp_footer(self, e: discord.Embed) -> None:
+    #     e.set_footer(text=f"{self.__class__.__name__} version: {self.__version__}")
+    #     e.timestamp = datetime.now()
 
-    def get_embed(self, **kwargs) -> discord.Embed:
-        e = discord.Embed(**kwargs)
-        e.set_author(name=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-        e.set_footer(text=f"{self.__class__.__name__} version: {self.__version__}")
-        e.timestamp = datetime.now()
-        return e
+    # def get_embed(self, **kwargs) -> discord.Embed:
+    #     e = discord.Embed(**kwargs)
+    #     e.set_author(name=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+    #     e.set_footer(text=f"{self.__class__.__name__} version: {self.__version__}")
+    #     e.timestamp = datetime.now()
+    #     return e
 
     # async def character_view(self, interaction: discord.Interaction) -> None:
     #     """Display character sheet."""
@@ -527,13 +519,13 @@ class Dungeon(commands.Cog, _DungeonMixin):
         await self.user_data.put(user_id, player.__dict__())
 
     async def user_sheet(self, user: discord.User) -> discord.Embed:
-        """Get player info."""
+        """Get player infosheet in embed."""
         player = await self.get_user(user, False)
         exp = player.exp
         required = player.exp_required(player.level)
-        job = self.job[player.job]
+        # job = self.job[player.job]
         e = discord.Embed(
-            title=f"{user.name}#{user.discriminator}",
+            title=f"{user.display_name}",
             description=player.status,
             colour=player.colour,
         )
@@ -607,7 +599,7 @@ class Dungeon(commands.Cog, _DungeonMixin):
                 value=f"```fix\n{content_str}\n```",
                 inline=False,
             )
-        self.stamp_footer(e)
+        stamp_footer(e)
         return e
 
     async def user_statsrecord(self, user: discord.User) -> discord.Embed:
@@ -643,7 +635,7 @@ class Dungeon(commands.Cog, _DungeonMixin):
             ),
             inline=False,
         )
-        self.stamp_footer(e)
+        stamp_footer(e)
         return e
 
     async def user_equipments(self, user: discord.User) -> discord.Embed:
@@ -720,7 +712,7 @@ class Dungeon(commands.Cog, _DungeonMixin):
                 inline=False,
             )
 
-        self.stamp_footer(e)
+        stamp_footer(e)
         return e
 
     async def reload_equip_stats(self, user_id: int):
@@ -981,5 +973,5 @@ class Dungeon(commands.Cog, _DungeonMixin):
             ),
             inline=False,
         )
-        self.stamp_footer(e)
+        stamp_footer(e)
         return e

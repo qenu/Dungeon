@@ -33,7 +33,7 @@ class Player(Entity):
         self.health = data.get("health", 0)
         self.exp = data.get("exp", 0)
         self.remain_stat = data.get("remain_stat", {})
-        self.job = data.get("job", "novice")
+        # self.job = data.get("job", "novice")
 
         self.monster_cnt = data.get("monster_cnt", 0)
         self.max_dmg = data.get("max_dmg", 0)
@@ -52,8 +52,11 @@ class Player(Entity):
         # hidden
         self.seen = data.get("seen", 0)  # todo: if 0, then perma
         self.petty = data.get("petty", 0)
-        self.prev_ts = data.get("prev_ts", 0)
+        self.prev_ts = data.get("prev_ts", 0)  # for health regen
         self.dungeon = data.get("dungeon", None)  # UUID of dungeon
+
+    def __repr__(self) -> str:
+        return f"<Player Lv.{self.level}>"
 
     def __dict__(self) -> dict:
         return {
@@ -81,7 +84,7 @@ class Player(Entity):
             "level": self.level,
             "exp": self.exp,
             "remain_stat": self.remain_stat,
-            "job": self.job,
+            # "job": self.job,
             "monster_cnt": self.monster_cnt,
             "max_dmg": self.max_dmg,
             "cum_dmg": self.cum_dmg,

@@ -13,62 +13,73 @@ class Entity(StatsModified):
         self.mys = data.get("mys", 3)
         self.luk = data.get("luk", 5)
         self.equip_stats = Stats()
+        self.pdef = data.get("pdef", 0)  # physical defense
+        self.mdef = data.get("mdef", 0)  # magical defense
+        self.pdi = data.get("pdi", 0)  # physical defense ignore
+        self.mdi = data.get("mdi", 0)  # magical defense ignore
         self.speed = data.get("speed", 75)  # base speed should be 75
+        self.enmity = data.get("enmity", 75)  # enmity
 
         # data
         self.level = data.get("level", 1)
 
     @property
-    def _vitality(self) -> int:
-        return int(max(self.vit * self.vit_mod), 0)
+    def _vitality(self) -> float:
+        return round(self.vit * self.vit_mod - self.mys / 100, 4)
 
     @property
     def vitality(self) -> int:
-        return int(self._vitality + self.equip_stats.vit)
+        return max(int(self._vitality + self.equip_stats.vit), 0)
 
     @property
-    def _dexterity(self) -> int:
-        return int(max(self.dex * self.dex_mod), 0)
+    def _dexterity(self) -> float:
+        return round(self.dex * self.dex_mod - self.sta / 100, 4)
 
     @property
     def dexterity(self) -> int:
-        return int(self._dexterity + self.equip_stats.dex)
+        return max(int(self._dexterity + self.equip_stats.dex), 0)
 
     @property
-    def _stamina(self) -> int:
-        return int(max(self.sta * self.sta_mod), 0)
+    def _stamina(self) -> float:
+        return round(self.sta * self.sta_mod - self.dex / 100, 4)
 
     @property
     def stamina(self) -> int:
-        return int(self._stamina + self.equip_stats.sta)
+        return max(int(self._stamina + self.equip_stats.sta), 0)
 
     @property
-    def _mystic(self) -> int:
-        return int(max(self.mys * self.mys_mod), 0)
+    def _mystic(self) -> float:
+        return round(self.mys * self.mys_mod - self.vit / 100, 4)
 
     @property
     def mystic(self) -> int:
-        return int(self._mystic + self.equip_stats.mys)
+        return max(int(self._mystic + self.equip_stats.mys), 0)
 
     @property
     def _luck(self) -> int:
-        return int(max(self.luk * self.luk_mod), 0)
+        return int(self.luk * self.luk_mod)
 
     @property
     def luck(self) -> int:
-        return int(self._luck + self.equip_stats.luk)
+        return max(int(self._luck + self.equip_stats.luk), 0)
 
     @property
     def _max_health(self) -> int:
         return int(self.level + self.stamina + max(self.level / 10, 1) * 50)
 
     @property
-    def regen(self) -> int:
-        return int(self.stamina * 2.5)
+    def regen(self) -> float:
+        """Health recovered every 10 seconds"""
+        return round(self.stamina * 2.5, 4)
 
     @property
-    def accuracy(self) -> float:
-        return self.dexterity / ((self.vitality + self.mystic) * 1.6)
+    def accuracy(self) -> int:
+        """Accuracy is a percentage in int, not a number"""
+        return int(
+            self.dexterity
+            * 100
+            / ((self.vitality + self.mystic) * 1.6 + self.dexterity * 0.2)
+        )
 
     @property
     def _physical_base_damage(self) -> int:
@@ -79,7 +90,7 @@ class Entity(StatsModified):
         return int(max(self.vitality * self.accuracy, self.vitality * 1.1))
 
     @property
-    def physical_damage(self) -> int:
+    def pdmg(self) -> int:
         return random.randint(self._physical_base_damage, self._physical_max_damage)
 
     @property
@@ -91,5 +102,5 @@ class Entity(StatsModified):
         return int(max(self.mystic * self.accuracy, self.mystic * 1.1))
 
     @property
-    def magical_damage(self) -> int:
+    def mdmg(self) -> int:
         return random.randint(self._magical_base_damage, self._magical_max_damage)
